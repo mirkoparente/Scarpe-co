@@ -1,0 +1,71 @@
+﻿@model Scarpe_co.Models.Prodotti
+
+
+@{
+    ViewBag.Title = "Index";
+    if (Request.Cookies[".ASPXAUTH"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutLogged.cshtml";
+
+    }
+  
+}
+
+<h2>Dettagli</h2>
+
+<div class="row">
+    <div class="col">
+
+        <div class="container py-3">
+            <!-- Card Start -->
+            <div class="card">
+                <div class="row ">
+
+                    <div class="col-md-7 px-3">
+                        <div class="card-block px-6">
+                            <h4 class="card-title">@Model.NomeProdotto</h4>
+                            <p class="card-text my-3">
+                                @Model.DescrizioneB
+                            </p>
+                            <p class="card-text my-3">@Model.DescrizioneL</p>
+                            <p class="card-text my-3">Prezzo: <strong>@Model.Prezzo.ToString("C2")</strong></p>
+                            <br>
+                        </div>
+                    </div>
+                    <!-- Carousel start -->
+                    <div class="col-md-5">
+
+                        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="@Model.Copertina" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="@Model.Img1" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="@Model.Img2" class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- End of carousel -->
+                </div>
+            </div>
+            <!-- End of card -->
+
+        </div>
+    </div>
+</div>
+<p>
+
+    @Html.ActionLink("Back", "Index", "", new { @class = "btn" })
+</p>

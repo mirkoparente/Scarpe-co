@@ -1,0 +1,57 @@
+﻿@model List<Scarpe_co.Models.Prodotti>
+
+@{
+    ViewBag.Title = "Index";
+    if (Request.Cookies[".ASPXAUTH"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    }
+
+}
+
+<h2 class="text-center my-3">Lista Prodotti</h2>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
+    @foreach (Scarpe_co.Models.Prodotti p in Model)
+    {
+       
+            <div class="col">
+                <div class="card card-profile">
+                    <div class="card-header card-header-image">
+                        <a href="#pablo">
+                            <img class="img" src="Content/img/@p.Copertina">
+
+                            <div class="card-title">
+                                @p.NomeProdotto
+                            </div>
+                        </a>
+                        <div class="colored-shadow" style="background-image: url('https://i.ytimg.com/vi/7xWxpunlZ2w/maxresdefault.jpg');opacity: 1;"></div>
+                    </div>
+                    <div class="card-body ">
+
+
+                        <p class="card-description">
+                           Quantità:  @p.Quantita
+                        </p>
+                          <p class="card-description">
+                           Prezzo:  @p.Prezzo
+                        </p>
+
+
+                    </div>
+                    <div class="card-footer justify-content-center">
+                        @if (Request.Cookies[".ASPXAUTH"] != null)
+                        {
+                            @Html.ActionLink("Modifica", "Edit", new { id = p.Id }, new { @class = "btn" })
+                            @Html.ActionLink("Elimina", "Delete", new { id = p.Id }, new { @class = "btn" })
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        }
+    
+</div>
+

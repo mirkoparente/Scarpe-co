@@ -1,0 +1,53 @@
+﻿@model List<Scarpe_co.Models.Prodotti>
+
+@{
+    ViewBag.Title = "Index";
+    if (Request.Cookies[".ASPXAUTH"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutLogged.cshtml";
+
+    }
+}
+
+<h2 class="text-center my-3">Prodotti</h2>
+
+             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
+@foreach (Scarpe_co.Models.Prodotti p in Model)
+{
+    if (p.Quantita > 0)
+    {
+
+                 <div class="col">
+                     <div class="card card-profile">
+                         <div class="card-header card-header-image">
+                             <a href="#pablo">
+                                 <img class="img" src="@p.Copertina">
+
+                                 <div class="card-title">
+                                     @p.NomeProdotto
+                                 </div>
+                             </a>
+                             <div class="colored-shadow" style="background-image: url('https://i.ytimg.com/vi/7xWxpunlZ2w/maxresdefault.jpg');opacity: 1;"></div>
+                         </div>
+                         <div class="card-body ">
+                            
+
+                             <p class="card-description">
+                                 @p.DescrizioneB
+                             </p>
+
+
+                         </div>
+                         <div class="card-footer justify-content-center">
+                           
+                             
+
+                                 @Html.ActionLink("Dettagli", "Dettagli", new { id = p.Id }, new { @class = "btn" })
+                             
+                         </div>
+                     </div>
+                 </div>
+    }
+}
+             </div>
+
